@@ -23,7 +23,7 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public Map<String, String> ingresar(Map<String, String> credenciales) {
+    public Map<String, Object> ingresar(Map<String, String> credenciales) {
         if (!Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$").matcher(credenciales.get("correo")).matches())
             throw new InvalidFormat("El correo no tiene un formato valido");
 
@@ -34,6 +34,7 @@ public class UsuarioService {
         String token = jwtAuthenticationConfig.getJWTToken(usuario.getCorreo());
         return new LinkedHashMap<>() {{
             put("token", token);
+            put("idUsuario", usuario.getId());
         }};
     }
 

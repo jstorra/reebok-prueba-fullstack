@@ -20,7 +20,7 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
     @PostMapping("/ingresar")
-    public Map<String, String> ingresar(@RequestBody Map<String, String> credenciales) {
+    public Map<String, Object> ingresar(@RequestBody Map<String, String> credenciales) {
         return usuarioService.ingresar(credenciales);
     }
 
