@@ -108,7 +108,7 @@ CREATE TRIGGER actualizar_nueva_cantidad_producto
 AFTER INSERT ON venta
 FOR EACH ROW
 BEGIN
-	UPDATE producto SET cantidad = cantidad - NEW.cantidad WHERE id = NEW.id_producto_fk;
+	INSERT INTO inventario (cantidad, id_producto_fk) VALUES (NEW.cantidad * -1, NEW.id_producto_fk);
 END;
 //
 DELIMITER ;

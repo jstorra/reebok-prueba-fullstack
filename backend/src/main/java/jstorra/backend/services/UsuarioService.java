@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 @Service
 public class UsuarioService {
@@ -23,6 +24,9 @@ public class UsuarioService {
     UsuarioRepository usuarioRepository;
 
     public Map<String, String> ingresar(Map<String, String> credenciales) {
+        if (!Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$").matcher(credenciales.get("correo")).matches())
+            throw new InvalidFormat("El correo no tiene un formato valido");
+
         Usuario usuario = usuarioRepository.findByCorreo(credenciales.get("correo"));
         if (usuario == null || !usuario.getContraseña().equalsIgnoreCase(credenciales.get("contraseña"))) {
             throw new InvalidUser("Las credenciales son incorrectas");
@@ -49,6 +53,9 @@ public class UsuarioService {
     }
 
     public Usuario crearUsuario(Usuario usuario) {
+        if (!Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$").matcher(usuario.getCorreo()).matches())
+            throw new InvalidFormat("El correo no tiene un formato valido");
+
         if (usuarioRepository.findByCorreo(usuario.getCorreo()) != null)
             throw new DuplicateEntry("El correo ya esta asociado a otro usuario");
 
