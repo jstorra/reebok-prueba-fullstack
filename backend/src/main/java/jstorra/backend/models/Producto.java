@@ -9,6 +9,7 @@ public class Producto {
     private int id;
     private String nombre;
     private double precio;
+    private String urlImagen;
 
     @ManyToOne
     @JoinColumn(name = "id_tipo_fk")
@@ -44,6 +45,14 @@ public class Producto {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 
     public TipoProducto getTipo() {

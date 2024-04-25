@@ -4,6 +4,7 @@ public class ProductoDTO {
     private int id;
     private String nombre;
     private double precio;
+    private String urlImagen;
     private int idTipo;
     private int idColor;
     private int idTalla;
@@ -30,6 +31,14 @@ public class ProductoDTO {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+
+    public String getUrlImagen() {
+        return urlImagen;
+    }
+
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
     }
 
     public int getIdTipo() {

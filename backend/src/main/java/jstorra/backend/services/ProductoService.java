@@ -48,6 +48,7 @@ public class ProductoService {
         producto.setId(productoDTO.getId()); // necesario para editar productos y no para crear
         producto.setNombre(productoDTO.getNombre());
         producto.setPrecio(productoDTO.getPrecio());
+        producto.setUrlImagen(productoDTO.getUrlImagen());
 
         TipoProducto tipoProducto = tipoProductoRepository.findById(productoDTO.getIdTipo())
                 .orElseThrow(() -> new ResourceNotFound("El tipo de producto no existe"));

@@ -59,6 +59,7 @@ CREATE TABLE producto(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(100) NOT NULL,
     precio DECIMAL(10,2) NOT NULL,
+    url_imagen TEXT NOT NULL,
     id_tipo_fk INT NOT NULL,
     id_color_fk INT NOT NULL,
     id_talla_fk INT NOT NULL,
@@ -67,10 +68,10 @@ CREATE TABLE producto(
 	FOREIGN KEY (id_talla_fk) REFERENCES talla_producto(id)
 );
 
-INSERT INTO producto (nombre, precio, id_tipo_fk, id_color_fk, id_talla_fk) VALUES
-('Zapatillas Rojas', 79.99, 1, 1, 1),
-('Camiseta Azul', 29.99, 2, 2, 2),
-('Pantalones Negros', 49.99, 3, 3, 3);
+INSERT INTO producto (nombre, precio, url_imagen, id_tipo_fk, id_color_fk, id_talla_fk) VALUES
+('Zapatillas Rojas', 79.99, 'https://www.lapolar.cl/dw/image/v2/BCPP_PRD/on/demandware.static/-/Sites-master-catalog/default/dwf9c99f04/images/large/1CC504336-rojo.jpg?sw=1200&sh=1200&sm=fit', 1, 1, 1),
+('Camiseta Azul', 29.99, 'https://prochampions.vtexassets.com/arquivos/ids/822500/Reebok-Reebok-Training-Speedwick-Graphic-Tee-Camiseta-Manga-Corta_100071005_03.jpg?v=638405858371330000', 2, 2, 2),
+('Pantalones Negros', 49.99, 'https://http2.mlstatic.com/D_NQ_NP_799494-MCO46444309021_062021-O.webp', 3, 3, 3);
 
 CREATE TABLE inventario(
 	id INT PRIMARY KEY AUTO_INCREMENT,
