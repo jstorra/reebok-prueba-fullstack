@@ -1,10 +1,7 @@
 package jstorra.backend.models.dtos;
 
-import java.sql.Timestamp;
-
 public class VentaDTO {
     private int id;
-    private Timestamp fecha;
     private int unidades;
     private double total;
     private int idProducto;
@@ -17,14 +14,6 @@ public class VentaDTO {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Timestamp getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Timestamp fecha) {
-        this.fecha = fecha;
     }
 
     public int getUnidades() {
