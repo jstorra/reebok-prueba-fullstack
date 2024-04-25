@@ -11,7 +11,7 @@ import jstorra.backend.repositories.VentaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -47,7 +47,7 @@ public class VentaService {
         Venta venta = new Venta();
 
         venta.setId(ventaDTO.getId());// necesario para editar ventas y no para crear
-        venta.setFecha(ventaDTO.getFecha());
+        venta.setFecha(new Timestamp(System.currentTimeMillis()));
         venta.setUnidades(ventaDTO.getUnidades());
         venta.setTotal(ventaDTO.getTotal());
 

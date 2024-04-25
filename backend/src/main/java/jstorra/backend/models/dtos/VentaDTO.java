@@ -1,10 +1,10 @@
 package jstorra.backend.models.dtos;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 public class VentaDTO {
     private int id;
-    private LocalDate fecha;
+    private Timestamp fecha;
     private int unidades;
     private double total;
     private int idProducto;
@@ -19,11 +19,11 @@ public class VentaDTO {
         this.id = id;
     }
 
-    public LocalDate getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 

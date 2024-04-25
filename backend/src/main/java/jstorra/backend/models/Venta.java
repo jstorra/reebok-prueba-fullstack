@@ -2,14 +2,14 @@ package jstorra.backend.models;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
+import java.sql.Timestamp;
 
 @Entity
 public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private LocalDate fecha;
+    private Timestamp fecha;
     private int unidades;
     private double total;
 
@@ -33,11 +33,11 @@ public class Venta {
         this.id = id;
     }
 
-    public LocalDate getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
 
-    public void setFecha(LocalDate fecha) {
+    public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
 

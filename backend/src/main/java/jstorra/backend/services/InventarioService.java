@@ -9,7 +9,9 @@ import jstorra.backend.repositories.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class InventarioService {
@@ -68,6 +70,20 @@ public class InventarioService {
 
             inventarioRepository.delete(inventarioRepository.findById(newId)
                     .orElseThrow(() -> new ResourceNotFound("El inventario no existe")));
+        } catch (NumberFormatException e) {
+            throw new InvalidFormat("El parametro tiene un formato invalido");
+        }
+    }
+
+    public Map<String, Integer> cantidadProducto(Object id) {
+        try {
+            int newId = Integer.parseInt(id.toString());
+
+            productoRepository.findById(newId).orElseThrow(() -> new ResourceNotFound("El producto no existe"));
+
+            return new LinkedHashMap<>(){{
+                put("cantidad", inventarioRepository.cantidadProducto(newId));
+            }};
         } catch (NumberFormatException e) {
             throw new InvalidFormat("El parametro tiene un formato invalido");
         }

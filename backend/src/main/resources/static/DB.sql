@@ -86,7 +86,7 @@ INSERT INTO inventario (cantidad, id_producto_fk) VALUES
 
 CREATE TABLE venta(
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    fecha DATE NOT NULL,
+    fecha TIMESTAMP NOT NULL,
     unidades INT NOT NULL,
     total DECIMAL(10, 2) NOT NULL,
     id_producto_fk INT NOT NULL,
@@ -98,9 +98,9 @@ CREATE TABLE venta(
 );
 
 INSERT INTO venta (fecha, unidades, total, id_producto_fk, id_cliente_fk, id_forma_pago_fk) VALUES
-('2024-04-24', 1, 79.99, 1, 1, 1),
-('2024-04-25', 2, 59.98, 2, 2, 2),
-('2024-04-26', 1, 49.99, 3, 1, 3);
+('2024-04-24 10:00:00', 1, 79.99, 1, 1, 1),
+('2024-04-25 11:00:00', 2, 59.98, 2, 2, 2),
+('2024-04-26 12:00:00', 1, 49.99, 3, 1, 3);
 
 -- TRIGGER
 DELIMITER //
@@ -108,7 +108,7 @@ CREATE TRIGGER actualizar_nueva_cantidad_producto
 AFTER INSERT ON venta
 FOR EACH ROW
 BEGIN
-	INSERT INTO inventario (cantidad, id_producto_fk) VALUES (NEW.cantidad * -1, NEW.id_producto_fk);
+	INSERT INTO inventario (cantidad, id_producto_fk) VALUES (NEW.unidades * -1, NEW.id_producto_fk);
 END;
 //
 DELIMITER ;
