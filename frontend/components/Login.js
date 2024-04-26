@@ -32,7 +32,7 @@ const Login = (uri, ruta) => {
             })).json();
 
             if (usuario.tipo === "admin") {
-                window.location.href = ruta + "views/admin-manage.html";
+                window.location.href = ruta + "views/adminsite.html";
             } else {
                 window.location.href = ruta + "views/cliente.html";
             }

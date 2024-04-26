@@ -1,11 +1,13 @@
 import uri from "./server/config.js";
 import Login from "./components/Login.js";
 import Registro from "./components/Registro.js";
+import Caracteristicas from "./components/Caracteristicas.js";
 
 const ruta = window.location.href.split("views")[0];
 
 document.addEventListener("DOMContentLoaded", async () => {
     const allowedPages = ["/login.html", "/registro.html", "/admin"];
+    const adminPages = ["/adminsite.html", "/caracteristicas-producto.html"];
 
     if (!allowedPages.includes(window.location.href.split("views")[1])) {
         const res = await fetch(uri + "/validarToken", {
@@ -23,7 +25,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         Registro(uri, ruta);
     }
 
-    if (window.location.href.includes("admin-manage.html")) {
+    if (window.location.href.includes("caracteristicas-producto.html")) {
+        Caracteristicas(uri);
+    }
+
+
+    if (adminPages.includes(window.location.href.split("views")[1])) {
         const usuario = await (await fetch(uri + "/usuarios/" + sessionStorage.getItem("idUsuario"), {
             headers: { "Authorization": sessionStorage.getItem("token") }
         })).json();

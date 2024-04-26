@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../assets/logo.svg" type="image/x-icon">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<script type="module" src="../app.js" defer></script>
+	<script src="../modules/navBar.js" async></script>
+	<link rel="stylesheet" href="../styles/caracteristicas-producto.css">
+	<title>Admin - Reebok</title>
+</head>
+
+<body>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand"><i class='bx bxs-hard-hat icon hat'></i> AdminSite</a>
+		<ul class="side-menu">
+			<li><a href="../views/adminsite.html" class="active"><i class='bx bxs-home icon'></i> Inicio</a></li>
+
+			<li class="divider" data-text="OPERACIONES">OPERACIONES</li>
+
+			<li>
+				<a href="#"><i class='bx bxs-t-shirt icon'></i> Productos <i
+						class='bx bx-chevron-right icon-right'></i></a>
+				<ul class="side-dropdown">
+					<li><a href="../views/caracteristicas-producto.html">Caracteristicas</a></li>
+					<li><a href="#">Inventario</a></li>
+				</ul>
+			</li>
+
+			<li>
+				<a href="#"><i class='bx bxs-badge-dollar icon'></i> Ventas <i
+						class='bx bx-chevron-right icon-right'></i></a>
+				<ul class="side-dropdown">
+					<li><a href="#">Forma Pago</a></li>
+				</ul>
+			</li>
+
+			<li><a href="#"><i class='bx bxs-group icon'></i> Usuarios</a></li>
+
+			<li class="divider" data-text="REPORTES">REPORTES</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+	<!-- NAVBAR -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu toggle-sidebar'></i>
+			<form action="#">
+
+			</form>
+
+			<span class="divider"></span>
+			<div class="profile">
+				<img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8cGVvcGxlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+					alt="">
+				<ul class="profile-link">
+					<li><a href="#"><i class='bx bxs-user-circle icon'></i> Profile</a></li>
+					<li><a href="#"><i class='bx bxs-cog'></i> Settings</a></li>
+					<li><a href="#"><i class='bx bxs-log-out-circle'></i> Logout</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<h1 class="title">Caracteristicas de producto</h1>
+			<div class="data">
+				<div class="content-data">
+					<h3 class="subtitle">Tipos</h3>
+					<form data-action="/tiposproducto" class="form-tipos">
+						<input type="text" name="nombre" placeholder="Nombre" required>
+						<button type="submit">Agregar</button>
+					</form>
+
+					<div class="search">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-search" viewBox="0 0 16 16">
+							<path
+								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+						</svg>
+						<input class="search-input" type="text" placeholder="Buscar por nombre">
+					</div>
+
+					<div class="tipos-producto container"></div>
+				</div>
+
+				<div class="content-data">
+					<h3 class="subtitle">Colores</h3>
+					<form class="form-colores">
+						<input type="text" name="nombre" placeholder="Nombre" required>
+						<button type="submit">Agregar</button>
+					</form>
+
+					<div class="search">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-search" viewBox="0 0 16 16">
+							<path
+								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+						</svg>
+						<input class="search-input" type="text" placeholder="Buscar por nombre">
+					</div>
+
+					<div class="colores-producto container"></div>
+				</div>
+
+				<div class="content-data">
+					<h3 class="subtitle">Tallas</h3>
+					<form class="form-tallas">
+						<input type="text" name="nombre" placeholder="Nombre" required>
+						<button type="submit">Agregar</button>
+					</form>
+
+					<div class="search">
+						<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+							class="bi bi-search" viewBox="0 0 16 16">
+							<path
+								d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+						</svg>
+						<input class="search-input" type="text" placeholder="Buscar por nombre">
+					</div>
+
+					<div class="tallas-producto container"></div>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- NAVBAR -->
+</body>
+
+</html>
