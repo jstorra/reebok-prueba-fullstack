@@ -1,8 +1,7 @@
 import buttonEvents from "../modules/buttonEvents.js";
+import solicitud from "../modules/solicitud.js";
 
-const Caracteristicas = async (uri) => {
-    const config = { headers: { "Authorization": sessionStorage.getItem("token") } }
-
+const Caracteristicas = async (uri, config) => {
     const forms = document.querySelectorAll("form");
 
     forms.forEach((form) => {
@@ -73,29 +72,7 @@ const Caracteristicas = async (uri) => {
     const btnsEditar = document.querySelectorAll(".editar");
     const btnsEliminar = document.querySelectorAll(".eliminar");
 
-    buttonEvents(uri, config, btnsEditar, btnsEliminar);
-}
-
-const solicitud = async (uri, config, element, info) => {
-    const res = await fetch(uri + element.dataset.action, config);
-
-    const message = await res.json();
-
-    if (res.ok) {
-        Swal.fire({
-            icon: "success",
-            title: `¡${info}!`,
-        }).then(() => {
-            window.location.reload();
-        });
-    } else {
-        Swal.fire({
-            icon: "error",
-            title: `${message.message}`,
-        }).then(() => {
-            window.location.reload();
-        });
-    }
+    buttonEvents(uri, config, btnsEditar, btnsEliminar, solicitud);
 }
 
 export default Caracteristicas;

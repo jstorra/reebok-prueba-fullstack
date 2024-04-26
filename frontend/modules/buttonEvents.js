@@ -1,4 +1,4 @@
-const buttonEvents = (uri, config, btnsEditar, btnsEliminar) => {
+const buttonEvents = (uri, config, btnsEditar, btnsEliminar, solicitud) => {
     btnsEditar.forEach((button) => {
         button.addEventListener("click", async () => {
             const btnAgregar = button.parentNode.parentNode.parentNode.parentNode.querySelector("form").querySelector("button");
@@ -15,21 +15,7 @@ const buttonEvents = (uri, config, btnsEditar, btnsEliminar) => {
     btnsEliminar.forEach((button) => {
         button.addEventListener("click", async () => {
             config["method"] = "DELETE";
-            const res = await fetch(uri + button.dataset.action, config)
-            if (res.ok) {
-                Swal.fire({
-                    icon: "success",
-                    title: "¡Registro eliminado!",
-                }).then(() => {
-                    window.location.reload();
-                });
-            } else {
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Puede que el registro ya se encuentre asociado"
-                });
-            }
+            solicitud(uri, config, button, "Registro eliminado", "Puede que el registro ya se encuentre asociado");
         })
     });
 }
