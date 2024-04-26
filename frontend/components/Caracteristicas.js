@@ -9,30 +9,19 @@ const Caracteristicas = async (uri) => {
         form.addEventListener("submit", async (e) => {
             e.preventDefault()
 
+            const btnSubmit = form.querySelector("button");
+
             const body = Object.fromEntries(new FormData(e.target));
 
             config["method"] = "POST";
             config["body"] = JSON.stringify(body);
             config.headers["Content-Type"] = "application/json";
 
-            const res = await fetch(uri + form.dataset.action, config)
-
-            const message = await res.json();
-
-            if (res.ok) {
-                Swal.fire({
-                    icon: "success",
-                    title: "¡Registro existoso!",
-                }).then(() => {
-                    window.location.reload();
-                });
+            if (btnSubmit.textContent === "Actualizar") {
+                config["method"] = "PUT";
+                solicitud(uri, config, btnSubmit, "Actualización exitosa")
             } else {
-                Swal.fire({
-                    icon: "error",
-                    title: `${message.message}`,
-                }).then(() => {
-                    window.location.reload();
-                });
+                solicitud(uri, config, form, "Registro exitoso")
             }
         })
     })
@@ -85,6 +74,28 @@ const Caracteristicas = async (uri) => {
     const btnsEliminar = document.querySelectorAll(".eliminar");
 
     buttonEvents(uri, config, btnsEditar, btnsEliminar);
+}
+
+const solicitud = async (uri, config, element, info) => {
+    const res = await fetch(uri + element.dataset.action, config);
+
+    const message = await res.json();
+
+    if (res.ok) {
+        Swal.fire({
+            icon: "success",
+            title: `¡${info}!`,
+        }).then(() => {
+            window.location.reload();
+        });
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: `${message.message}`,
+        }).then(() => {
+            window.location.reload();
+        });
+    }
 }
 
 export default Caracteristicas;
